@@ -4,35 +4,43 @@ namespace LW_2_14
 {
     public  class Country
     {
-        public List<Organization> OrganizationList;
+        private static int _counter = 0;
+
+        public string Name;
+
+        public SortedDictionary<string, Organization> OrganizationList;
 
         public Country()
         {
-            OrganizationList = new List<Organization>();
+            OrganizationList = new SortedDictionary<string, Organization>();
+            Name = $"Country {_counter}";
+            _counter++;
         }
 
         public Country(int count, Random rn)
         {
-            OrganizationList = new List<Organization>();
-            for (int i = 0; i < count; i++)
+            OrganizationList = new SortedDictionary<string, Organization>();
+            Name = $"Country {_counter}";
+            while (OrganizationList.Count < count)
             {
                 switch (rn.Next(0, 5))
                 {
-                    case 0: OrganizationList.Add(new Organization(ref rn)); break;
-                    case 1: OrganizationList.Add(new Factory(ref rn)); break;
-                    case 2: OrganizationList.Add(new InsuranceCompany(ref rn)); break;
-                    case 3: OrganizationList.Add(new Library(ref rn)); break;
-                    case 4: OrganizationList.Add(new ShipConstructingCompany(ref rn)); break;
+                    case 0: var org0 = new Organization(ref rn); OrganizationList.TryAdd(org0.Name, org0); break;
+                    case 1: var org1 = new Factory(ref rn); OrganizationList.TryAdd(org1.Name, org1); break;
+                    case 2: var org2 = new Library(ref rn); OrganizationList.TryAdd(org2.Name, org2); break;
+                    case 3: var org3 = new InsuranceCompany(ref rn); OrganizationList.TryAdd(org3.Name, org3); break;
+                    case 4: var org4 = new ShipConstructingCompany(ref rn); OrganizationList.TryAdd(org4.Name, org4); break;
                 }
             }
+            _counter++;
         }
 
-        public string Show()
+        public override string ToString()
         {
-            string res = "";
-            foreach (var item in OrganizationList)
+            string res = "\n>>>" + this.Name + '\n';
+            foreach (var item in OrganizationList.Values)
             {
-                res += item.ToString() + '\n';
+                res += ">>>>>>" + item.ToString() + '\n';
             }
             return res;
         }
