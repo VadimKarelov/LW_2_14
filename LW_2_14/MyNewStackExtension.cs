@@ -35,40 +35,52 @@ namespace LW_2_14
             return res;
         }
 
-        public static double Average<T>(this MyNewStack<T> ms)
+        public static double Average<T>(this MyNewStack<T> ms) where T : Organization
         {
-            if (ms is MyNewStack<Organization> msO)
+            if (ms.Count > 0)
             {
-                return msO.Average(x => x.AverageSalary);
+                return ms.Average(x => x.AverageSalary);
             }
-            return ms.Average();
+            else
+            {
+                throw new Exception("Collection empty");
+            }
         }
 
-        public static double Min<T>(this MyNewStack<T> ms)
+        public static double Min<T>(this MyNewStack<T> ms) where T : Organization
         {
-            if (ms is MyNewStack<Organization> msO)
+            if (ms.Count > 0)
             {
-                return msO.Min(x => x.AverageSalary);
+                return ms.Min(x => x.AverageSalary);
             }
-            return ms.Min();
+            else
+            {
+                throw new Exception("Collection empty");
+            }
         }
 
-        public static double Max<T>(this MyNewStack<T> ms)
+        public static double Max<T>(this MyNewStack<T> ms) where T : Organization
         {
-            if (ms is MyNewStack<Organization> msO)
+            if (ms.Count > 0)
             {
-                return msO.Max(x => x.AverageSalary);
+                return ms.Max(x => x.AverageSalary);
             }
-            return ms.Max();
+            else
+            {
+                throw new Exception("Collection empty");
+            }
         }
 
-        public static double Sum<T>(this MyNewStack<T> ms)
+        public static double Sum<T>(this MyNewStack<T> ms) where T : Organization
         {
-            if (ms is MyNewStack<Organization> msO)
+            if (ms.Count > 0)
             {
-                return msO.Sum(x => x.AverageSalary);
+                return ms.Sum(x => x.AverageSalary);
             }
-            return ms.Sum();
+            else
+            {
+                throw new Exception("Collection empty");
+            }
         }
     }
 }
