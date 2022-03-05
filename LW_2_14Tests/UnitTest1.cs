@@ -2,6 +2,7 @@ using LW_2_13;
 using LW_2_14;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LW_2_14Tests
@@ -196,6 +197,79 @@ namespace LW_2_14Tests
             double expected = 600;
 
             double actual = st.Sum();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GroupNoElements()
+        {
+            MyNewStack<Organization> st = new();
+
+            Assert.ThrowsException<Exception>(() => st.Group());
+        }
+
+        [TestMethod]
+        public void Group1()
+        {
+            MyNewStack<Organization> st = new();
+            st.Push(new Organization("A", "Magadan", 100));
+            st.Push(new Organization("B", "Magadan", 200));
+            st.Push(new Organization("C", "Moscow", 300));
+
+            int expected = 2;
+
+            int actual = st.Group().Count();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Group2()
+        {
+            MyNewStack<Organization> st = new();
+            st.Push(new Organization("A", "Khabarovsk", 100));
+            st.Push(new Organization("B", "Magadan", 200));
+            st.Push(new Organization("C", "Moscow", 300));
+
+            int expected = 3;
+
+            int actual = st.Group().Count();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void Group3()
+        {
+            MyNewStack<Organization> st = new();
+            st.Push(new Organization("A", "Magadan", 100));
+            st.Push(new Organization("B", "Magadan", 200));
+            st.Push(new Organization("C", "Magadan", 300));
+
+            int expected = 1;
+
+            int actual = st.Group().Count();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToMyNewStack()
+        {
+            MyNewStack<Organization> st = new();
+            st.Push(new Organization("A", "Magadan", 100));
+            st.Push(new Organization("B", "Magadan", 200));
+            st.Push(new Organization("C", "Magadan", 300));
+
+            List<Organization> l = new();
+            l.Add(new Organization("A", "Magadan", 100));
+            l.Add(new Organization("B", "Magadan", 200));
+            l.Add(new Organization("C", "Magadan", 300));
+
+            bool expected = true;
+
+            bool actual = l.ToMyNewStack().Equals(st);
 
             Assert.AreEqual(expected, actual);
         }

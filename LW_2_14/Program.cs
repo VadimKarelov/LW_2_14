@@ -33,6 +33,15 @@ namespace LW_2_14
             Print(Request4(l));
 
             Console.WriteLine($"\nКоличество страховых с количеством клиентов больше 80: {Request5(l)}\n");
+
+            Console.WriteLine("\nВсе библиотеки");
+            Print(Request6(l));
+
+            Console.WriteLine("\nБиблиотеки с зарплатой больше 9000");
+            Print(Request8(l));
+
+            Console.WriteLine("\nВсе заводы с группировкой по городам");
+            Print(Request7(l));
         }
 
         private static List<Organization> Request1(List<Continent> continents)
@@ -92,9 +101,41 @@ namespace LW_2_14
                     select org).Count();
         }
 
+        private static List<Organization> Request6(List<Continent> continents)
+        {
+            // выборка LINQ 
+            // все библиотеки
+
+            return (from continent in continents
+                    from country in continent.Countries
+                    from org in country.OrganizationList.Values
+                    where org is Library
+                    select org).ToList();
+        }
+
+        private static List<IGrouping<string, Organization>> Request7(List<Continent> continents)
+        {
+            // выборка и группировка LINQ и методы расширения
+            // все заводы с группировкой по городам
+
+            return (from continent in continents
+                    from country in continent.Countries
+                    from org in country.OrganizationList.Values
+                    where org is Factory
+                    select org).GroupBy(x => x.City).ToList();
+        }
+
+        private static List<Organization> Request8(List<Continent> continents)
+        {
+            // пересечение методами расширения 
+            // библиотеки с зарплатой больше 9000
+
+            return Request1(continents).Intersect(Request6(continents)).ToList();
+        }
+
         private static void Part2()
         {
-            Console.WriteLine("<<<Часть 2>>>");
+            Console.WriteLine("\n\n<<<Часть 2>>>");
 
             MyNewStack<Organization> st = new();
 
@@ -117,6 +158,9 @@ namespace LW_2_14
             Console.WriteLine($"Минимальная зарплата {st.Min()}");
             Console.WriteLine($"Максимальная зарплата {st.Max()}");
             Console.WriteLine($"Сумма всех зарплат {st.Sum()}");
+
+            Console.WriteLine($"\nОрганизации с зарплатой выше среднего c группировкой по городу");
+            Print(st.Select(x => x.AverageSalary > st.Average()).ToMyNewStack().Group());
         }
 
         private static void Print<T>(IEnumerable<T> collection)
@@ -124,6 +168,17 @@ namespace LW_2_14
             foreach (var item in collection)
             {
                 Console.WriteLine(item);
+            }
+        }
+
+        private static void Print(List<IGrouping<string, Organization>> collection)
+        {
+            foreach (var item in collection)
+            {
+                foreach (var item2 in item)
+                {
+                    Console.WriteLine(item2);
+                }                
             }
         }
     }

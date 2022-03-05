@@ -2,7 +2,7 @@
 
 namespace LW_2_14
 {
-    public  class Country
+    public class Country
     {
         private static int _counter = 0;
 
