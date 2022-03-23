@@ -2,7 +2,6 @@ D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_14.exe
 D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_14.deps.json
 D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_14.runtimeconfig.json
 D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_14.dll
-D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\ref\LW_2_14.dll
 D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_14.pdb
 D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_13.dll
 D:\University\2 year\OOP\LW_2_14\LW_2_14\bin\Debug\net6.0\LW_2_13.pdb
@@ -16,3 +15,4 @@ D:\University\2 year\OOP\LW_2_14\LW_2_14\obj\Debug\net6.0\LW_2_14.dll
 D:\University\2 year\OOP\LW_2_14\LW_2_14\obj\Debug\net6.0\ref\LW_2_14.dll
 D:\University\2 year\OOP\LW_2_14\LW_2_14\obj\Debug\net6.0\LW_2_14.pdb
 D:\University\2 year\OOP\LW_2_14\LW_2_14\obj\Debug\net6.0\LW_2_14.genruntimeconfig.cache
+D:\University\2 year\OOP\LW_2_14\LW_2_14\obj\Debug\net6.0\refint\LW_2_14.dll

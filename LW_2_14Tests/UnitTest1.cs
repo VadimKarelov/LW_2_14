@@ -273,5 +273,22 @@ namespace LW_2_14Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void SelectLikeLINQ()
+        {
+            MyNewStack<Organization> st = new();
+            st.Push(new Organization("A", "Magadan", 100));
+            st.Push(new Organization("B", "Magadan", 200));
+            st.Push(new Organization("C", "Magadan", 300));
+
+            List<double> l = st.Select(x => x.AverageSalary);  
+
+            bool expected = true;
+
+            bool actual = l[0] == 300 && l[1] == 200 && l[2] == 100;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

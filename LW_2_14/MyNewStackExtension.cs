@@ -22,6 +22,17 @@ namespace LW_2_14
             return res;
         }
 
+        // классический вариант Select() из Linq
+        public static List<OutT> Select<T, OutT>(this MyNewStack<T> ms, Func<T, OutT> selector)
+        {
+            List<OutT> res = new List<OutT>();
+            foreach (var item in ms)
+            {
+                res.Add(selector(item));
+            }
+            return res;
+        }
+
         public static int Count<T>(this MyNewStack<T> ms, Func<T, bool> predicate)
         {
             int res = 0;
